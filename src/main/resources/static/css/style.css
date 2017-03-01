@@ -1,0 +1,21 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css?family=Combo&subset=latin-ext'); /*Combo*/
+@import url('https://fonts.googleapis.com/css?family=Akronim&subset=latin-ext'); /*Akronim*/
+@import url('https://fonts.googleapis.com/css?family=Galada'); /*Galada*/
+
+body {
+    background: url('../img/background.jpg') fixed no-repeat;
+    background-size: 100%;
+    }
+
+footer {
+    text-align: right;
+    font-family: 'Galada', cursive;
+    }
+#combo {
+    font-family: 'Combo', cursive;
+}
+#header {
+font-family: 'Akronim', cursive;
+color:#330033;
+}
