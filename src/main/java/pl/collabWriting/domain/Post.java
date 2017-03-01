@@ -24,7 +24,7 @@ public class Post
     private Story story;
 
     @Column(columnDefinition = "TEXT")
-    private String body;
+    private String postBody;
 
     @CreatedDate
     private Date postedOn;
@@ -33,6 +33,8 @@ public class Post
     {
         //
     }
+
+
 
     public Long getId() {
         return id;
@@ -58,12 +60,12 @@ public class Post
         this.story = story;
     }
 
-    public String getBody() {
-        return body;
+    public String getPostBody() {
+        return postBody;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setPostBody(String postBody) {
+        this.postBody = postBody;
     }
 
     public Date getPostedOn() {

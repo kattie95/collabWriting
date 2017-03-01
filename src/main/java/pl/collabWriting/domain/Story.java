@@ -23,6 +23,8 @@ public class Story
     @CreatedDate
     private Date startedOn;
 
+    private boolean active;
+
     @ManyToOne
     private User user;
 
@@ -85,5 +87,13 @@ public class Story
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

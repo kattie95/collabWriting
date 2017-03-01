@@ -25,20 +25,27 @@ public class User
     private String email;
     private String description;
 
+    @ManyToOne
+    private Role role;
+
     @OneToMany
     private List<Story> stories;
 
     @OneToMany
     private List<Post> posts;
 
+    @OneToMany
+    private List<Comment> comments;
+
     private User()
     {
         //
     }
 
-    public User(String fullName, String email) {
+    public User(String fullName, String email, Role role) {
         this.fullName = fullName;
         this.email = email;
+        this.role = role;
     }
 
     public List<Story> getStories() {
@@ -103,5 +110,21 @@ public class User
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
