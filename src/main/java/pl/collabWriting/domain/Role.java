@@ -27,6 +27,12 @@ public class Role
         //
     }
 
+    public Role(String role, boolean makeStory, boolean makePost) {
+        this.role = role;
+        this.makeStory = makeStory;
+        this.makePost = makePost;
+    }
+
     public Role(String role) {
         this.role = role;
     }

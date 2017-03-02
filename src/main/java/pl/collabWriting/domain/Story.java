@@ -20,8 +20,12 @@ public class Story
     private String title;
     private String description;
 
+    //TODO wymyśleć tagi - żeby z góry można określić kierunek historii i sortować, jeśli ktoś chce tylko w danym kierunku pisać... tag.
+
     @CreatedDate
     private Date startedOn;
+
+    private Date lastUpdate; //TODO wymyślić, jak usawić, żeby postedOn z Post było lastUpdate tutaj
 
     private boolean active;
 

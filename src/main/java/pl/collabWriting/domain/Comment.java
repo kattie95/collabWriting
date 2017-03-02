@@ -22,6 +22,7 @@ public class Comment
 
     private String commentBody;
 
+    @SuppressWarnings("unused")
     private Comment()
     {
         //

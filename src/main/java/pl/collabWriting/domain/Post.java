@@ -4,6 +4,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author kattie95
@@ -29,12 +30,14 @@ public class Post
     @CreatedDate
     private Date postedOn;
 
+    @OneToMany
+    private List<Comment> comments;
+
+    @SuppressWarnings("unused")
     private Post()
     {
         //
     }
-
-
 
     public Long getId() {
         return id;
@@ -74,5 +77,13 @@ public class Post
 
     public void setPostedOn(Date postedOn) {
         this.postedOn = postedOn;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
