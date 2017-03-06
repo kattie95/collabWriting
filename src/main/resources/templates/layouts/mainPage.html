@@ -11,48 +11,37 @@
     <link href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
 </head>
-<postBody>
-<div>
-
-    <div class="jumbotron text-center">
-        <h1 id="header">Pisanie Kolaboracyjne</h1>
-        <p id="combo">Historie tworzone z pasją</p>
-    </div>
+<body>
+<div class="jumbotron text-center">
+    <h1 id="header">Pisanie Kolaboracyjne</h1>
+    <p id="combo">Historie tworzone z pasją</p>
+</div>
 <div class="text">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Strona Główna</a>
+                <a class="navbar-brand" href="http://localhost:8080">Strona Główna</a>
             </div>
 
             <ul class="nav navbar-nav">
                 <li class="dropdown" th:class="${controllerName == 'User'} ? 'dropdown active' : 'dropdown'">
                     <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Twórcy<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Pisarze</a></li>
-                        <li><a href="#">Kolaboranci</a></li>
+                        <li><a href="/users/writers">Pisarze</a></li>
+                        <li><a href="/users/collabs">Kolaboranci</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Historie<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Świeżo stworzone</a></li>
+                        <li><a href="/stories/list">Świeżo stworzone</a></li>
                         <li><a href="#">Ostatnio dopisane</a> </li>
                         <li><a href="#">Zakończone</a></li>
                     </ul>
                 </li>
-                <!--
-                <li class="dropdown">
-                    <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teksty<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a  href="#">Historie</a></li>
-                        <li><a  href="#">Wpisy</a></li>
-                    </ul>
-                </li>
-                //TODO zastanowić się, jaką sytuacje wybrać, jak podzielić historie i wpisy do przeglądania -->
+                <!-- //TODO zastanowić się, jaką sytuacje wybrać, jak podzielić historie i wpisy do przeglądania -->
             </ul>
-
 
             <div class="navbar-text navbar-right">
                 <a href="#">Dołącz do Nas!</a> | <a href="#">Zaloguj się</a>
@@ -65,13 +54,13 @@
     </div>
 
     <footer>
-        <p>Copyright <a href="https://github.com/kattie95">kattie95©</a></p>
+        <p id="copyrights">Copyright <a href="https://github.com/kattie95">kattie95©</a></p>
     </footer>
-</div>
-</div>
 
-<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</div>
+</body>
+
 <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-</postBody>
 </html>

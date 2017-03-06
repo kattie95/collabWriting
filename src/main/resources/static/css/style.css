@@ -2,22 +2,39 @@
 @import url('https://fonts.googleapis.com/css?family=Combo&subset=latin-ext'); /*Combo*/
 @import url('https://fonts.googleapis.com/css?family=Akronim&subset=latin-ext'); /*Akronim*/
 @import url('https://fonts.googleapis.com/css?family=Galada'); /*Galada*/
+@import url('https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo'); /*Swanky and Moo Moo*/
+@import url('https://fonts.googleapis.com/css?family=Quintessential'); /*Quintessential*/
 
 body {
     background: url('../img/background.jpg') fixed no-repeat;
     background-size: 100%;
     }
 
-footer {
-    text-align: right;
+p, section{
+    font-family: 'Quintessential', cursive;
+}
+
+footer{
     font-family: 'Galada', cursive;
-    }
+}
+
+#copyrights {
+    text-align: right;
+    font-family: 'Swanky and Moo Moo', cursive;
+}
+
 #combo {
     font-family: 'Combo', cursive;
 }
+
 #header {
-font-family: 'Akronim', cursive;
-color:#330033;
+    font-family: 'Akronim', cursive;
+    color:#330033;
+}
+
+#comments{
+    text-align:right;
+    font-family: 'Galada', cursive;
 }
 
 .text{
