@@ -17,6 +17,9 @@ public class Story
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    private User user;
+
     private String title;
     private String description;
 
@@ -25,14 +28,11 @@ public class Story
     @CreatedDate
     private Date startedOn;
 
-    private Date lastUpdate; //TODO wymyślić, jak usawić, żeby postedOn z Post było lastUpdate tutaj
+  //  private Date lastUpdate; //TODO wymyślić, jak usawić, żeby postedOn z Post było lastUpdate tutaj
 
     private boolean active;
 
-    @ManyToOne
-    private User user;
-
-    @OneToMany
+    @OneToMany (mappedBy = "story")
     private List<Post> posts;
 
     private Story()
@@ -40,10 +40,11 @@ public class Story
         //
     }
 
-    public Story(String title, User user) {
-        this.title = title;
+    public Story(Long id, User user, String title) {
+        this.id = id;
         this.user = user;
-    }
+        this.title = title;
+        }
 
     public Long getId() {
         return id;

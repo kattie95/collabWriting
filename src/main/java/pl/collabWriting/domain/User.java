@@ -21,8 +21,8 @@ public class User
     @Column (nullable = false)
     private String password;
 
-    private String fullName;
     private String email;
+    private String fullName;
     private String description;
 
     @ManyToOne
@@ -37,6 +37,7 @@ public class User
     @OneToMany
     private List<Comment> comments;
 
+
     private User()
     {
         //
@@ -47,6 +48,7 @@ public class User
         this.email = email;
         this.role = role;
     }
+
 
     public List<Story> getStories() {
         return stories;
@@ -63,6 +65,7 @@ public class User
     public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
+
 
     public Long getId() {
         return id;
@@ -127,4 +130,5 @@ public class User
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
 }

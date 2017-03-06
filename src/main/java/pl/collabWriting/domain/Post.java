@@ -33,6 +33,7 @@ public class Post
     @OneToMany
     private List<Comment> comments;
 
+
     @SuppressWarnings("unused")
     private Post()
     {
@@ -86,4 +87,5 @@ public class Post
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
 }

@@ -19,8 +19,10 @@ public class Role
     private boolean makeStory;
     private boolean makePost;
 
+
     @OneToMany
     private Set<User> users;
+
 
     private Role()
     {
@@ -76,4 +78,5 @@ public class Role
     public void setUsers(Set<User> users) {
         this.users = users;
     }
+
 }

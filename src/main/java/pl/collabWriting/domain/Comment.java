@@ -1,6 +1,9 @@
 package pl.collabWriting.domain;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @author kattie95
@@ -22,13 +25,14 @@ public class Comment
 
     private String commentBody;
 
+    @CreatedDate
+    private Date commentedOn;
+
     @SuppressWarnings("unused")
     private Comment()
     {
         //
     }
-
-
 
     public Long getId() {
         return id;
@@ -60,5 +64,13 @@ public class Comment
 
     public void setCommentBody(String commentBody) {
         this.commentBody = commentBody;
+    }
+
+    public Date getCommentedOn() {
+        return commentedOn;
+    }
+
+    public void setCommentedOn(Date commentedOn) {
+        this.commentedOn = commentedOn;
     }
 }
