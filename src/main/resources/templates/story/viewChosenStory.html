@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorator="layouts/mainPage">
+<head>
+    <title th:text="${story.title}">Tytuł wybranej historii</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <article>
+        <header>
+            <h2 th:text="${story.title}">Tytuł</h2>
+            <p th:text="${#calendars.format(story.startedOn,'dd/MM/yyyy HH:mm ')}">Data zaczętej historii.<br/>
+                <span th:text="|${story.user.fullName}|"><a href="#">Pełna nazwa autora, przez którą idzie się do jego strony z innymi Historiami.</a></span></p>
+        </header>
+
+        <section th:utext="${story.description}">
+            Opis hisorii.
+        </section>
+        <hr/>
+        <article th:each="post : ${posts}">
+
+            <section th:utext="${post.postBody}">
+                Wpis do Historii
+            </section>
+            <footer>
+                <br/>
+                <p th:text="${#calendars.format(post.postedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której dodano Wpis.</p>
+                    <p th:text="|${post.user.fullName}|">Nazwa dodającego Wpis.</p>
+                <p id="comments" href="#">Komentarze!</p>
+            </footer>
+            <hr/>
+        </article>
+
+
+        <footer>
+            <address>
+                Podoba Ci się? Zajrzyj po więcej <a href="">Historii</a> zaczętych i prowadzonych przeze mnie.
+            </address>
+        </footer>
+        <hr/>
+    </article>
+
+</div>
+
+</body>
+</html>

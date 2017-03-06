@@ -1,0 +1,35 @@
+<!doctype html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorator="layouts/mainPage">
+<meta charset="utf-8"/>
+<head>
+    <title>Kolaboracyjne Historie</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <article th:each="story : ${stories}">
+        <header>
+            <h2 id="combo" th:text="${story.title}">Pożądany tytuł tu będzie/ ma być.</h2>
+            <p th:text="${#calendars.format(story.startedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której Historia się zaczęła.</p>
+        </header>
+        <section th:utext="${story.description}">
+            Opis historii w paru -nastu słowach. To się rozwinie. Pracuję nad tym :)
+        </section>
+        <br/>
+        <footer>
+            <p>
+                Ta Historia ma obecnie <b href="#">(liczba n)</b> Wpisów. Może to zwiększymy..? <br/>
+                <a th:href="|@{/stories/view/}${story.id}|">Czytaj Historię!</a>
+            </p>
+            <address>
+                Historia zaczęta przez <a href="#"><span th:text="|${story.user.fullName}|">Imię i nazwisko Pisarza z linkiem do reszty Historii.</span></a>
+            </address>
+        </footer>
+        <hr/>
+    </article>
+
+</div>
+</body>
+</html>
