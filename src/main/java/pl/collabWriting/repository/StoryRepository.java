@@ -15,7 +15,6 @@ public interface StoryRepository extends PagingAndSortingRepository<Story, Long>
 {
     List<Story> findAllByOrderByStartedOnDesc();
 
-
     /*
     Story findFirstByOrderByLastUpdateDesc();
     * do użycia, jak znajdzie się sposób na lastUpdate

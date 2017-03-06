@@ -24,4 +24,10 @@ public class StoryService
     {
         return storyRepository.findAllByOrderByStartedOnDesc();
     }
+
+    public Story viewChosenStory(Long id)
+    {
+        return storyRepository.findOne(id);
+    }
+
 }

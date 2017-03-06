@@ -11,23 +11,23 @@ import pl.collabWriting.service.StoryService;
 /**
  * @author kattie95
  */
-
 @Controller
-@RequestMapping("/stories")
-public class StoryController
+public class PostController
 {
+    private PostService postService;
     private StoryService storyService;
 
     @Autowired
-    public StoryController(StoryService storyService) {
+    public PostController(PostService postService, StoryService storyService) {
+        this.postService = postService;
         this.storyService = storyService;
     }
 
-    @RequestMapping("/list")
-    public String listOfStories(Model model)
+    @RequestMapping("stories/view/{id}")
+    public String viewChosenStory(@PathVariable(value = "id") Long id, Model model)
     {
-        model.addAttribute("stories", storyService.list());
-        return "story/listOfAllStories";
+        model.addAttribute("story",storyService.viewChosenStory(id));
+        model.addAttribute("posts",postService.listByStoryId(id));
+        return "story/viewChosenStory";
     }
-
 }
