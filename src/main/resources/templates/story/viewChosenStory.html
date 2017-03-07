@@ -29,11 +29,14 @@
                 <br/>
                 <p th:text="${#calendars.format(post.postedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której dodano Wpis.</p>
                     <p th:text="|${post.user.fullName}|">Nazwa dodającego Wpis.</p>
-                <p id="comments" href="#">Komentarze!</p>
+                <a id="comments" th:href="|@{/stories/comments/}${post.id}|">Komentarze! <span class="badge" th:text="${post.comments.size()}">n</span></a>
             </footer>
             <hr/>
         </article>
 
+        <p th:if="${posts.size() == 0}">
+        <div class="alert alert-warning" role="alert">Jeszcze nikt nie dodał Wpisu. Możesz być pierwszy!</div>
+        </p>
 
         <footer>
             <address>

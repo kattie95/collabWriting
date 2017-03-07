@@ -26,4 +26,8 @@ public class PostService
         return postRepository.findAllByStoryIdOrderByPostedOnAsc(id);
     }
 
+    public Post viewChosenPost(Long id)
+    {
+        return postRepository.findOne(id);
+    }
 }

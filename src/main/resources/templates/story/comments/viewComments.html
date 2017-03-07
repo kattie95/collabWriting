@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorator="layouts/mainPage">
+<head>
+    <title th:text="${post.story.title}">Tytuł wybranej historii</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <article>
+        <header>
+            <h2 th:text="${post.story.title}">Tytuł</h2>
+            <p th:text="|Początek: ${#calendars.format(post.story.startedOn,'dd/MM/yyyy HH:mm ')}|">Data zaczętej historii.</p>
+            Autor: <a href="#"><span th:text="|${post.story.user.fullName}|">Pełna nazwa autora, przez którą idzie się do jego strony z innymi Historiami.</span></a>
+        </header>
+        <hr/>
+        <article>
+            <section th:utext="${post.postBody}">
+                Wpis do Historii
+            </section>
+            <footer>
+                <br/>
+                <p th:text="${#calendars.format(post.postedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której dodano Wpis.</p>
+                <p th:text="|${post.user.fullName}|">Nazwa dodającego Wpis.</p>
+            </footer>
+            <hr/>
+        </article>
+        <h4><i>Komentarze:</i></h4>
+        <section th:each="comment : ${comments}">
+            <footer>
+                <p th:text="|${comment.user.fullName} ( ${#calendars.format(comment.commentedOn, 'dd.MM.yyyy HH:mm')} )|">Data, w której dodano Komentarz.</p>
+            </footer>
+            <p th:utext="${comment.commentBody}">
+                Komentarz do danego Wpisu
+            </p>
+            <hr/>
+        </section>
+
+        <p th:if="${comments.size() == 0}">
+            <div class="alert alert-warning" role="alert">Jeszcze nikt nie dodał komentarza. Możesz być pierwszy!</div>
+        </p>
+
+        <footer>
+            <br/>
+            <a id="comments" th:href="|@{/stories/view/}${post.story.id}|">Powrót do Historii</a>
+        </footer>
+
+    </article>
+
+</div>
+
+</body>
+</html>

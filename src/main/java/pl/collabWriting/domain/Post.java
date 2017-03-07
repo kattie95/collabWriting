@@ -30,7 +30,7 @@ public class Post
     @CreatedDate
     private Date postedOn;
 
-    @OneToMany
+    @OneToMany (mappedBy = "post")
     private List<Comment> comments;
 
 
