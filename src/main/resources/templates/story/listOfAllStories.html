@@ -20,8 +20,8 @@
         <br/>
         <footer>
             <p>
-                Ta Historia ma obecnie <b href="#">(liczba n)</b> Wpisów. Może to zwiększymy..? <br/>
-                <a th:href="|@{/stories/view/}${story.id}|">Czytaj Historię!</a>
+                Ta Historia ma obecnie <span class="badge" th:text="${story.posts.size()}">za mało</span> Wpisów. Może to zwiększymy..? <br/>
+                <a th:href="|@{/stories/view/}${story.id}|">Czytaj Historię!</a> ...lub <a href="|@{/stories/create/}${story.id}|">dodaj Wpis</a> od razu!
             </p>
             <address>
                 Historia zaczęta przez <a href="#"><span th:text="|${story.user.fullName}|">Imię i nazwisko Pisarza z linkiem do reszty Historii.</span></a>

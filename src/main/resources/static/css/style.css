@@ -40,3 +40,12 @@ footer{
 .text{
     margin:55px;
 }
+
+.affix {
+      top: 0;
+      width: 100%;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 700px;
+  }
