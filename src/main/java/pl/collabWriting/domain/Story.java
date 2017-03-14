@@ -28,24 +28,25 @@ public class Story
     @CreatedDate
     private Date startedOn;
 
-  //  private Date lastUpdate; //TODO wymyślić, jak usawić, żeby postedOn z Post było lastUpdate tutaj
-
     private boolean active;
+    private boolean allowWriters;
+    private boolean allowCollabs;
 
     @OneToMany (mappedBy = "story")
     private List<Post> posts;
 
-    private Story()
+    @SuppressWarnings("unused")
+    public Story()
     {
         //
     }
-
+/*
     public Story(Long id, User user, String title) {
         this.id = id;
         this.user = user;
         this.title = title;
         }
-
+*/
     public Long getId() {
         return id;
     }
@@ -100,5 +101,21 @@ public class Story
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public boolean isAllowWriters() {
+        return allowWriters;
+    }
+
+    public void setAllowWriters(boolean allowWriters) {
+        this.allowWriters = allowWriters;
+    }
+
+    public boolean isAllowCollabs() {
+        return allowCollabs;
+    }
+
+    public void setAllowCollabs(boolean allowCollabs) {
+        this.allowCollabs = allowCollabs;
     }
 }

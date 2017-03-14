@@ -29,7 +29,7 @@ public class Comment
     private Date commentedOn;
 
     @SuppressWarnings("unused")
-    private Comment()
+    public Comment()
     {
         //
     }

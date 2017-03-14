@@ -19,10 +19,8 @@ public class Role
     private boolean makeStory;
     private boolean makePost;
 
-
-    @OneToMany
+    @OneToMany (mappedBy = "role")
     private Set<User> users;
-
 
     private Role()
     {

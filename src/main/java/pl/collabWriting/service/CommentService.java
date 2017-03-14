@@ -25,4 +25,9 @@ public class CommentService
     {
         return commentRepository.findAllByPostIdOrderByCommentedOnDesc(id);
     }
+
+    public Comment save (Comment comment)
+    {
+        return commentRepository.save(comment);
+    }
 }

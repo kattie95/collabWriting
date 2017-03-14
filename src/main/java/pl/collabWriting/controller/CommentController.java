@@ -31,6 +31,7 @@ public class CommentController
     {
         model.addAttribute("post",postService.viewChosenPost(id));
         model.addAttribute("comments",commentService.showComments(id));
+        model.addAttribute("comment", new Comment());
         return "story/comments/viewComments";
     }
 

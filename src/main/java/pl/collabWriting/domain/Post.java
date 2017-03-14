@@ -33,9 +33,8 @@ public class Post
     @OneToMany (mappedBy = "post")
     private List<Comment> comments;
 
-
     @SuppressWarnings("unused")
-    private Post()
+    public Post()
     {
         //
     }

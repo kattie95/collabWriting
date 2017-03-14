@@ -30,4 +30,9 @@ public class StoryService
         return storyRepository.findOne(id);
     }
 
+    public Story save(Story story)
+    {
+        return storyRepository.save(story);
+    }
+
 }

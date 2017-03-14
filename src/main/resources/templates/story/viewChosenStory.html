@@ -38,6 +38,32 @@
         <div class="alert alert-warning" role="alert">Jeszcze nikt nie dodał Wpisu. Możesz być pierwszy!</div>
         </p>
 
+        <!-- Opcja dodania nowego postu, tuż pod resztą postów.-->
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#create">Dodaj post!</button>
+        <div id="create" class="collapse">
+            <form class="form-horizontal" th:object="${post}" th:action="@{/stories/view/save}" method="post">
+
+                <input type="hidden" th:field="*{id}" />
+
+                <div class="form-group">    <!-- //TODO ma brać czas aktualny - startedOn-->
+                    <label class="col-sm-2 control-label">Data spisania:</label>
+                    jak tylko naciśniesz guziczek.
+                    <input type="hidden" th:field="*{postedOn}" />
+                </div>
+
+                <!--   //TODO ma brać autora automatycznie - userId -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Co będzie we Wpisie?</label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" rows="3" th:field="*{postBody}">ciąg dalszy historii</textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default">Powiedz!</button>
+            </form>
+        </div>
+
+        <hr/>
+
         <footer>
             <address>
                 Podoba Ci się? Zajrzyj po więcej <a href="">Historii</a> zaczętych i prowadzonych przeze mnie.

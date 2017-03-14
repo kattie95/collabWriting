@@ -1,0 +1,56 @@
+<!doctype html>
+<html
+        layout:decorator="layouts/mainPage">
+<meta charset="utf-8"/>
+<head>
+    <title>Nowa Historia</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <h2>Tworzenie nowej Historii</h2>
+    <hr/>
+
+    <form class="form-horizontal" th:object="${story}" th:action="@{/stories/save}" method="story">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Tytuł dzieła: </label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" th:field="*{title}" />
+            </div>
+        </div>
+
+        <div class="form-group">    <!-- //TODO ma brać czas aktualny - startedOn-->
+            <label class="col-sm-2 control-label">Data poczęcia:</label>
+            jak tylko naciśniesz guziczek.
+        </div>
+
+        <!-- //TODO ustawić, by automatycznie ustawiał active=true -->
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Kto może dodawać Wpisy?</label>
+            <div class="col-md-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" th:field="*{allowWriters}"/> Pisarze
+                    </label>
+                    <label>
+                        <input type="checkbox" th:field="*{allowCollabs}"/> Kolaboranci
+                    </label>
+                </div>
+            </div>
+        </div>
+            <!--   //TODO dodać, żeby brało autora automatycznie - userId -->
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Opis</label>
+            <div class="col-md-10">
+                <textarea class="form-control" rows="5" th:field="*{description}">teaser</textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-default">Twórz!</button>
+    </form>
+
+</div>
+</body>
+</html>

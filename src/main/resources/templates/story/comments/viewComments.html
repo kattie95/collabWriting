@@ -42,6 +42,27 @@
             <div class="alert alert-warning" role="alert">Jeszcze nikt nie dodał komentarza. Możesz być pierwszy!</div>
         </p>
 
+        <!-- Opcja dodania nowego komentarza.-->
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#create">Dodaj komentarz!</button>
+        <div id="create" class="collapse">
+            <form class="form-horizontal" th:object="${comment}" th:action="@{/stories/comments/save}" method="comment">
+
+                <input type="hidden" th:field="*{id}" />
+
+                <!-- //TODO ma brać czas aktualny - startedOn-->
+                <!--   //TODO ma brać autora automatycznie - userId -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Twje trzy grosze:</label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" rows="3" th:field="*{commentBody}">komentarz</textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default">Skomentuj!</button>
+            </form>
+        </div>
+
+        <hr/>
+
         <footer>
             <br/>
             <a id="comments" th:href="|@{/stories/view/}${post.story.id}|">Powrót do Historii</a>
