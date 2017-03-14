@@ -1,0 +1,28 @@
+<!doctype html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorator="layouts/mainPage">
+<meta charset="utf-8"/>
+<head>
+    <title>Kolaboracyjne Historie</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <article th:each="post : ${posts}">
+        <h2 id="combo" th:text="|Historia: ${post.story.title}|">tytuł</h2>
+        <section th:utext="${post.postBody}">
+            Wpis do Historii
+        </section>
+        <footer>
+            <br/>
+            <p th:text="${#calendars.format(post.postedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której dodano Wpis.</p>
+            <p th:text="|${post.user.fullName}|">Nazwa dodającego Wpis.</p>
+            <a id="comments" th:href="|@{/stories/comments/}${post.id}|">Komentarze! <span class="badge" th:text="${post.comments.size()}">n</span></a>
+        </footer>
+        <hr/>
+    </article>
+
+</div>
+</body>
+</html>

@@ -36,6 +36,11 @@ public class PostService
         return postRepository.findFirstByOrderByPostedOnDesc();
     }
 
+    public List<Post> listByLastUpdatedPosts()
+    {
+        return postRepository.findAllByOrderByPostedOnDesc();
+    }
+
     public Post save (Post post){
         return postRepository.save(post);
     }

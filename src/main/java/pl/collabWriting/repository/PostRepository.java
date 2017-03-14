@@ -16,4 +16,5 @@ public interface PostRepository extends PagingAndSortingRepository<Post, Long>
     List<Post> findAllByStoryIdOrderByPostedOnAsc(Long id);
 
     Post findFirstByOrderByPostedOnDesc();
+    List<Post> findAllByOrderByPostedOnDesc();
 }

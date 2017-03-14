@@ -19,10 +19,12 @@ import pl.collabWriting.service.StoryService;
 public class StoryController
 {
     private StoryService storyService;
+    private PostService postService;
 
     @Autowired
-    public StoryController(StoryService storyService) {
+    public StoryController(StoryService storyService, PostService postService) {
         this.storyService = storyService;
+        this.postService = postService;
     }
 
     @RequestMapping("/newest")
@@ -30,6 +32,13 @@ public class StoryController
     {
         model.addAttribute("stories", storyService.list());
         return "story/listOfAllStories";
+    }
+
+    @RequestMapping("/updated")
+    public String latestUpdates(Model model)
+    {
+        model.addAttribute("posts", postService.listByLastUpdatedPosts());
+        return "story/lastUpdated";
     }
 
     @RequestMapping("/create")
