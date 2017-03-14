@@ -1,0 +1,44 @@
+<!doctype html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorator="layouts/mainPage">
+<meta charset="utf-8"/>
+<head>
+    <title>Kolaboracyjne Historie</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <article th:each="story : ${stories}">
+        <header>
+            <h2 id="combo" th:text="${story.title}">Pożądany tytuł tu będzie/ ma być.</h2>
+            <p th:text="${#calendars.format(story.startedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której Historia się zaczęła.</p>
+        </header>
+        <section th:utext="${story.description}">
+            Opis historii w paru -nastu słowach. To się rozwinie. Pracuję nad tym :)
+        </section>
+        <br/>
+        <footer>
+            <p>
+                Ta Historia ma <span class="badge" th:text="${story.posts.size()}">za mało</span> Wpisów. <br/>
+                Została zakończona <b th:text="${#calendars.format(post.postedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której dodano Wpis.</b>
+                przez <b th:text="|${post.user.fullName}|">Nazwa dodającego Wpis.</b>.
+                <a th:href="|@{/stories/view/}${story.id}|">Czytaj Historię!</a>
+            </p>
+            <address>
+                Historia zaczęta przez <a href="#"><span th:text="|${story.user.fullName}|">Imię i nazwisko Pisarza z linkiem do reszty Historii.</span></a>
+            </address>
+        </footer>
+        <hr/>
+    </article>
+
+    <p th:if="${stories.size() == 0}">
+    <div class="alert alert-warning" role="alert">
+        Jeszcze nikt nie zakończył żadnej z Historii. <br/>
+        Idź i rozszerzaj ich światy jeszcze bardziej!
+    </div>
+    </p>
+
+</div>
+</body>
+</html>

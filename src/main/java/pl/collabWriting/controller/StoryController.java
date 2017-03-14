@@ -41,6 +41,14 @@ public class StoryController
         return "story/lastUpdated";
     }
 
+    @RequestMapping("/finished")
+    public String finished(Model model)
+    {
+        model.addAttribute("stories",storyService.listOfFinishedStories());
+        model.addAttribute("post", postService.getLastUpdatedPost());
+        return "story/finishedStories";
+    }
+
     @RequestMapping("/create")
     public String create(Model model)
     {
