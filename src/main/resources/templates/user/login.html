@@ -1,0 +1,33 @@
+<!doctype html>
+<html
+        layout:decorator="layouts/mainPage">
+<meta charset="utf-8"/>
+<head>
+    <title>Zaloguj się do Kolaboracji</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <form name="f" th:action="@{/login}" method="post" class="form-signin">
+        <h3 class="form-signin-heading">Super tajna kolaboracja.<br/>Chcesz wejść?</h3>
+        <div th:if="${param.error}" class="alert alert-danger">
+            Chochlik pomylił Ci literki, spróbuj raz jeszcze.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+            Be problemów wylogowałeś się z Kolaboracji. Miłego dnia!
+        </div>
+        <label for="username" class="sr-only">Godność</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Super tajny pseudonim" required="true" />
+        <label for="password" class="sr-only">Kolaboranckie hasło</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Super tajne hasło" required="true" />
+        <div class="checkbox">
+            <label>
+                <input id="remember-me" name="remember-me" type="checkbox" /> Pamiętaj mnie, skarbie.
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Nadciągam!</button>
+    </form>
+
+</div>
+</body>
+</html>

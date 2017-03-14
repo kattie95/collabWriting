@@ -1,0 +1,140 @@
+<!doctype html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.w3.org/1999/xhtml">
+<meta charset="utf-8"/>
+<head>
+    <title>Collab Writing</title>
+
+    <link href="/css/style.css" rel="stylesheet"/>
+    <link href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="jumbotron text-center container-fluid">
+    <h1 id="header">Pisanie Kolaboracyjne</h1>
+    <p id="combo">I Ty możesz być częścią tych Historii</p>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://localhost:8080">Strona Główna</a>
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Twórcy<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Pisarze</a></li> <!-- "/users/writers" -->
+                    <li><a href="#">Kolaboranci</a></li> <!-- "/users/collabs" -->
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Historie<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/stories/newest">Świeżo stworzone</a></li>
+                    <li><a href="#">Ostatnio dopisane</a></li>  <!-- based on 'lastUpdated' -->
+                    <li><a href="#">Zakończone</a></li> <!-- based on 'active = false' -->
+                </ul>
+            </li>
+
+            <li class="dropdown"> <!-- //TODO security - sec:authorize="hasRole('ROLE_ADMIN')" -->
+                <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kącik Pisarza<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/stories/create">Stwórz nową Historię</a></li>
+                    <li><a href="#">Przegląd Dzieci</a> </li>
+                    <!-- będzie guzik w Historiach, który ma je odpowiednio sortować..? -->
+                    <li><a href="#">Zakończone</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="navbar-text navbar-right">
+            <a href="/sign">Dołącz do Nas!</a> <span class="glyphicon glyphicon-user"></span> |
+            <a href="/login">Zaloguj się</a> <span class="glyphicon glyphicon-log-in"></span>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="panel-group" >
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#writer">Pisarz</a>
+                        </h4>
+                    </div>
+                    <div id="writer" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            Będąc w Tej grupie Użytkowników możesz tworzyć nowe <b>Historie</b> oraz <b>Wpisy</b> do Historii, o ile główny Autor tak postanowił.
+                            <hr/>
+                            Jeśli uwielbiasz pisać, ale czasami brakuje Ci pomysłu na dalszy rozwój wątku, postaci, ogólnie - zdarza Ci się utknąć lub po prostu pragniesz, czegoś nowego, czego nawet Ty nie przewidzisz - dołącz jako Pisarz!
+                            Twórz nowe Historie, określaj czy i jaki mają motyw przewodni, kto może dodawać Wpisy i razem z Tobą rozwijać Dzieci!<br/>
+                            Ty decydujesz, kiedy i jak się skończy Opowieść.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collab">Kolaborant</a>
+                        </h4>
+                    </div>
+                    <div id="collab" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Stając się Kolaborantem będziesz mógł dodawać <b>Wpisy</b> do niemalże wszystkich Historii, jakie zostaną stworzone, chyba że trafi się rodzynek, gdzie akurat Pisarz będzie chciał tylko innych Pisarzy.
+                            <hr/>
+                            Ta grupa jest dla ludzi, którzy mają dużo pomysłów i czasami lubią coś napisać lub zasugerować czy też po prostu zmienić "oczywisty" bieg Historii.
+                            Nie każdy lubi czy potrafi dużo pisać. Co nie zmienia faktu, że takie osoby miewają intrygujące rozwiązania dla typowego "zastoju" w Opowieści.
+                            Jeżeli czujesz, że <i>większe</i> pisanie nie jest dla Ciebie, ale z chęcią chciałbyś czasem dorzucić swoje pomysły, rozwiązania czy też niespodziewany (<b>acz logiczny</b>) plot twist - z chęcią
+                            przyjmiemy Cię w szeregi Kolaborantów - trzonu tej strony.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#reader">Czytelnik</a>
+                        </h4>
+                    </div>
+                    <div id="reader" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Czytelnicy mogą widzieć <b>wszystkie</b> Wpisy, Historie i Komentarze, aczkolwiek mogą tylko Komentować.
+                            <hr/>
+                            Nie jesteś zainteresowany pisaniem? Uważasz, że to nie jest dla Ciebie i dawno porzuciłeś wszelkie kartki z ewentualnymi pomysłami na opowiastki?<br/>
+                            Nic nie szkodzi! Z radością przyjmiemy i Ciebie!<br/>
+                            Czytelnicy są niezbędni dla wszelakich spisywanych tekstów. Dzięki komentarzom możesz podzielić się swoimi wrażeniami, sugestiami czy też pomysłami, które mogły wpaść Ci do głowy.
+                            Dlatego - nie krępuj się! Przywitamy Cię z całym arsenałem pisanych Historii, które tylko pragną ożyć w Twojej wyobraźni.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text" style="min-height:500px">
+
+    <div layout:fragment="content">
+    </div>
+
+    <footer class="navbar-fixed-bottom">
+        <p id="copyrights">Copyright <a href="https://github.com/kattie95">kattie95©</a></p>
+    </footer>
+</div>
+</body>
+
+<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</html>
