@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import pl.collabWriting.domain.Post;
 import pl.collabWriting.service.PostService;
 import pl.collabWriting.service.StoryService;
 
@@ -28,6 +30,22 @@ public class PostController
     {
         model.addAttribute("story",storyService.viewChosenStory(id));
         model.addAttribute("posts",postService.listByStoryId(id));
+        model.addAttribute("post", new Post());
         return "story/viewChosenStory";
     }
+
+    @RequestMapping("stories/view/create") //todo dodać to jako guzik przy poście - ma zejść collapse możliwość dodania postu
+    public String create(Model model)
+    {
+        model.addAttribute("post", new Post());
+        return "story/post/create";
+    }
+
+    @RequestMapping(value = "stories/view/save", method = RequestMethod.POST)
+    public String save(Post post)
+    {
+        Post savedPost = postService.save(post);
+        return "redirect:stories/view/" + savedPost.getStory().getId(); //TODO coś do zmiany tu zapewne będzie
+    }
+
 }

@@ -5,7 +5,7 @@
 <head>
     <title>Kolaboracja - Home Page</title>
 </head>
-<postBody>
+<body>
 <div layout:fragment="content">
 
     <div>
@@ -16,9 +16,22 @@
             <p>Niech Wasza inwencja i siła kreacji stworzy niespotykane historie, które będą podlegać Waszym regułom.</p>
         </div>
     <h4>Czyli po prostu - piszmy wspólnie i dobrze się bawmy!</h4>
+        <hr/>
     </div>
 
-
+    <h3>Ostatnio dodany Wpis: </h3>
+    <h2 id="combo" th:text="|Historia: ${post.story.title}|">tytuł</h2>
+    <article>
+        <section th:utext="${post.postBody}">
+            Wpis do Historii
+        </section>
+        <footer>
+            <br/>
+            <p th:text="${#calendars.format(post.postedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której dodano Wpis.</p>
+            <p th:text="|${post.user.fullName}|">Nazwa dodającego Wpis.</p>
+            <a id="comments" th:href="|@{/stories/comments/}${post.id}|">Komentarze! <span class="badge" th:text="${post.comments.size()}">n</span></a>
+        </footer>
+    </article>
 </div>
-</postBody>
+</body>
 </html>

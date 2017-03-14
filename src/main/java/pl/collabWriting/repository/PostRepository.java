@@ -14,4 +14,6 @@ import java.util.List;
 public interface PostRepository extends PagingAndSortingRepository<Post, Long>
 {
     List<Post> findAllByStoryIdOrderByPostedOnAsc(Long id);
+
+    Post findFirstByOrderByPostedOnDesc();
 }

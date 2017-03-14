@@ -17,7 +17,8 @@
     <p id="combo">Historie tworzone z pasją</p>
 </div>
 
-    <nav class="navbar navbar-inverse " data-spy="affix" data-offset-top="195">
+    <nav class="navbar navbar-inverse " data-spy="affix" data-offset-top="225">
+
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="http://localhost:8080">Strona Główna</a>
@@ -41,10 +42,10 @@
                     </ul>
                 </li>
 
-                <li class="dropdown"> <!-- //TODO security - dział dla WRITER'a-->
+                <li class="dropdown"> <!-- //TODO security - sec:authorize="hasRole('ROLE_ADMIN')" -->
                     <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kącik Pisarza<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Stwórz nową Historię</a></li>
+                        <li><a href="/stories/create">Stwórz nową Historię</a></li>
                         <li><a href="#">Przegląd Dzieci</a> </li>
                         <!-- utworzyć listę w bok: najmłodsze; najstarsze; ostatnio ruszone -->
                         <li><a href="#">Zakończone</a></li>
@@ -53,17 +54,19 @@
             </ul>
 
             <div class="navbar-text navbar-right">
-                <a href="#">Dołącz do Nas!</a> <span class="glyphicon glyphicon-user"></span> | <a href="#">Zaloguj się</a> <span class="glyphicon glyphicon-log-in"></span>
+                <a href="/sign">Dołącz do Nas!</a> <span class="glyphicon glyphicon-user"></span> |
+                <a href="/login">Zaloguj się</a> <span class="glyphicon glyphicon-log-in"></span>
             </div>
 
         </div>
     </nav>
-<div class="text">
+
+<div class="text" style="min-height:500px">
 
     <div layout:fragment="content">
     </div>
 
-    <footer>
+    <footer class="navbar-fixed-bottom">
         <p id="copyrights">Copyright <a href="https://github.com/kattie95">kattie95©</a></p>
     </footer>
 

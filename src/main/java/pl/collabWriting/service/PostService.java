@@ -30,4 +30,13 @@ public class PostService
     {
         return postRepository.findOne(id);
     }
+
+    public Post getLastUpdatedPost()
+    {
+        return postRepository.findFirstByOrderByPostedOnDesc();
+    }
+
+    public Post save (Post post){
+        return postRepository.save(post);
+    }
 }
