@@ -34,18 +34,10 @@ public class PostController
         return "story/viewChosenStory";
     }
 
-    @RequestMapping("stories/view/create") //todo dodać to jako guzik przy poście - ma zejść collapse możliwość dodania postu
-    public String create(Model model)
-    {
-        model.addAttribute("post", new Post());
-        return "story/post/create";
-    }
-
     @RequestMapping(value = "stories/view/save", method = RequestMethod.POST)
     public String save(Post post)
     {
         Post savedPost = postService.save(post);
-        return "redirect:stories/view/" + savedPost.getStory().getId(); //TODO coś do zmiany tu zapewne będzie
+        return "redirect:stories/view/" + savedPost.getStory().getId(); //TODO uzupełnić szkic
     }
-
 }

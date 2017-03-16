@@ -35,18 +35,10 @@ public class CommentController
         return "story/comments/viewComments";
     }
 
-    @RequestMapping("stories/comments/create") //todo dodać to jako guzik przy konkretnym poście - ma zejść collapse możliwość dodania postu
-    public String create(Model model)
-    {
-        model.addAttribute("comment", new Comment());
-        return "story/comments/create";
-    }
-
     @RequestMapping(value = "stories/comments/save", method = RequestMethod.POST)
     public String save(Comment comment)
     {
         Comment savedComment = commentService.save(comment);
-        return "redirect:stories/comments/" + savedComment.getPost().getId(); //TODO coś do zmiany tu zapewne będzie
+        return "redirect:stories/comments/" + savedComment.getPost().getId(); //TODO tylko przygotowany szkic
     }
-
 }
