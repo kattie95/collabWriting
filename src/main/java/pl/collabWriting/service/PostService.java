@@ -1,6 +1,7 @@
 package pl.collabWriting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
 import pl.collabWriting.domain.Post;
 import pl.collabWriting.repository.PostRepository;
@@ -15,11 +16,6 @@ import java.util.List;
 public class PostService
 {
     private PostRepository postRepository;
-
-    @Autowired
-    public PostService(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
 
     public List<Post> listByStoryId(Long id)
     {
@@ -43,5 +39,11 @@ public class PostService
 
     public Post save (Post post){
         return postRepository.save(post);
+    }
+
+    @Autowired
+    @Required
+    public void setPostRepository(PostRepository postRepository) {
+        this.postRepository = postRepository;
     }
 }
