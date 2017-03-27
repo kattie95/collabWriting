@@ -1,6 +1,7 @@
 package pl.collabWriting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
 import pl.collabWriting.domain.Story;
 import pl.collabWriting.repository.StoryRepository;
@@ -14,11 +15,6 @@ import java.util.List;
 public class StoryService
 {
     private StoryRepository storyRepository;
-
-    @Autowired
-    public StoryService(StoryRepository storyRepository) {
-        this.storyRepository = storyRepository;
-    }
 
     public List<Story> list()
     {
@@ -40,4 +36,9 @@ public class StoryService
         return storyRepository.save(story);
     }
 
+    @Autowired
+    @Required
+    public void setStoryRepository(StoryRepository storyRepository) {
+        this.storyRepository = storyRepository;
+    }
 }

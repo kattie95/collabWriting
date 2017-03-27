@@ -1,6 +1,7 @@
 package pl.collabWriting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserDetailsService
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
-        User user = findByUsername(username);
+        User user = findByUsername(username);    //to samo(?) -> userRepositry.findByUsername(username);
         if (user == null)
         {
             throw new UsernameNotFoundException(username);
@@ -36,8 +37,8 @@ public class UserServiceImpl implements UserDetailsService
     //todo dodać jeszcze exception w przypadku błędnego hasła - zastanowić się
 
     @Autowired
+    @Required
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
 }

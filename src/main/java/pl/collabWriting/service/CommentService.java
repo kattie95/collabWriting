@@ -1,6 +1,7 @@
 package pl.collabWriting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
 import pl.collabWriting.domain.Comment;
 import pl.collabWriting.repository.CommentRepository;
@@ -16,11 +17,6 @@ public class CommentService
 {
     private CommentRepository commentRepository;
 
-    @Autowired
-    public CommentService(CommentRepository commentRepository) {
-        this.commentRepository = commentRepository;
-    }
-
     public List<Comment> showComments(Long id)
     {
         return commentRepository.findAllByPostIdOrderByCommentedOnDesc(id);
@@ -30,4 +26,11 @@ public class CommentService
     {
         return commentRepository.save(comment);
     }
+
+    @Autowired
+    @Required
+    public void setCommentRepository(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
+    }
+
 }
