@@ -2,7 +2,8 @@
 <html
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:th="http://www.thymeleaf.org"
-        xmlns:layout="http://www.w3.org/1999/xhtml">
+        xmlns:layout="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <meta charset="utf-8"/>
 <head>
     <title>Collab Writing</title>
@@ -53,8 +54,14 @@
         </ul>
 
         <div class="navbar-text navbar-right">
-            <a href="/sign">Dołącz do Nas!</a> <span class="glyphicon glyphicon-user"></span> |
-            <a href="/login">Zaloguj się</a> <span class="glyphicon glyphicon-log-in"></span>
+            <form sec:authorize="isAnonymous()">
+                <a href="/sign">Dołącz do Nas!</a> <span class="glyphicon glyphicon-user"></span> |
+                <a href="/login">Zaloguj się</a> <span class="glyphicon glyphicon-log-in"></span>
+            </form>
+            <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
+                Witaj <i sec:authentication="name">miły Gościu.</i>
+                | <a href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Wyloguj się</a>
+            </form>
         </div>
 
     </div>
