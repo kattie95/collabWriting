@@ -11,10 +11,10 @@
     <form name="f" th:action="@{/login}" method="post" class="form-signin">
         <h3 class="form-signin-heading">Super tajna kolaboracja.<br/>Chcesz wejść?</h3>
         <div th:if="${param.error}" class="alert alert-danger">
-            Chochlik pomylił Ci literki, spróbuj raz jeszcze.
+            Chochlik pomyliłeś literki, spróbuj raz jeszcze.
         </div>
         <div th:if="${param.logout}" class="alert alert-success">
-            Be problemów wylogowałeś się z Kolaboracji. Miłego dnia!
+            Bez problemów wylogowałeś się z Kolaboracji. Miłego dnia!
         </div>
         <label for="username" class="sr-only">Godność</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="Super tajny pseudonim" required="true" />
