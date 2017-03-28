@@ -42,7 +42,7 @@
                 </ul>
             </li>
 
-            <li class="dropdown"> <!-- //TODO security - sec:authorize="hasRole('ROLE_ADMIN')" -->
+            <li class="dropdown" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_WRITER')" >
                 <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kącik Pisarza<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="/stories/create">Stwórz nową Historię</a></li>
