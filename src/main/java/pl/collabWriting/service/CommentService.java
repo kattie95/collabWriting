@@ -17,9 +17,9 @@ public class CommentService
 {
     private CommentRepository commentRepository;
 
-    public List<Comment> showComments(Long id)
+    public List<Comment> showComments(Long postId)
     {
-        return commentRepository.findAllByPostIdOrderByCommentedOnDesc(id);
+        return commentRepository.findAllByPostIdOrderByCommentedOnDesc(postId);
     }
 
     public Comment save (Comment comment)

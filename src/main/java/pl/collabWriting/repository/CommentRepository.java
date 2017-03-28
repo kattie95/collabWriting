@@ -13,5 +13,5 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends PagingAndSortingRepository<Comment, Long>
 {
-    List<Comment> findAllByPostIdOrderByCommentedOnDesc(Long id);
+    List<Comment> findAllByPostIdOrderByCommentedOnDesc(Long postId);
 }
