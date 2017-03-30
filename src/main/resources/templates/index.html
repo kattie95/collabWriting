@@ -29,7 +29,10 @@
             <br/>
             <p th:text="${#calendars.format(post.postedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której dodano Wpis.</p>
             <p th:text="|${post.user.fullName}|">Nazwa dodającego Wpis.</p>
-            <a id="comments" th:href="|@{/stories/comments/}${post.id}|">Komentarze! <span class="badge" th:text="${post.comments.size()}">n</span></a>
+            <p>Czytaj całą <a th:href="|@{/stories/view/}${post.story.id}|"> Historię <span class="badge" th:text="|${post.story.posts.size()} Wpisów|">n</span></a>
+                lub przejdź do sekcji z
+            <a id="comments" th:href="|@{/stories/comments/}${post.id}|"> Komentarzami <span class="badge" th:text="${post.comments.size()}">n</span></a>
+            dla tego Wpisu.</p>
         </footer>
     </article>
 </div>
