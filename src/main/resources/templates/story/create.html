@@ -12,7 +12,14 @@
     <hr/>
 
     <form class="form-horizontal" th:object="${story}" th:action="@{/stories/save}" method="story">
+
         <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Autor:</label>
+            <input type="hidden" th:field="*{user}"/>
+            <b th:text="${currentUser.fullName}">fullname</b> - upewnij się, że to Twoje konto :)
+        </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">Tytuł dzieła: </label>
@@ -21,12 +28,14 @@
             </div>
         </div>
 
-        <div class="form-group">    <!-- //TODO ma brać czas aktualny - startedOn-->
+        <div class="form-group">
+            <input type="hidden" th:field="*{startedOn}" />
             <label class="col-sm-2 control-label">Data poczęcia:</label>
-            jak tylko naciśniesz guziczek.
+            <div>
+            jak tylko naciśniesz guziczek: <i th:text="${#calendars.format(#calendars.createNow(), 'dd/MM/yyyy HH:mm:ss')}">Data, w której stworzona zostanie .</i>
+            </div>
         </div>
 
-        <!-- //TODO ustawić, by automatycznie ustawiał active=true -->
         <div class="form-group">
             <label class="col-sm-2 control-label">Kto może dodawać Wpisy?</label>
             <div class="col-md-10">
@@ -40,7 +49,7 @@
                 </div>
             </div>
         </div>
-            <!--   //TODO dodać, żeby brało autora automatycznie - userId -->
+
         <div class="form-group">
             <label class="col-sm-2 control-label">Opis</label>
             <div class="col-md-10">
