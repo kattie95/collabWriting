@@ -10,7 +10,9 @@
 <div layout:fragment="content">
 
     <article th:each="post : ${posts}">
-        <h2 id="combo" th:text="|Historia: ${post.story.title}|">tytuł</h2>
+        <a th:href="|@{/stories/view/}${post.story.id}|">
+            <h2 id="combo" th:text="|Historia: ${post.story.title}|">tytuł</h2>
+        </a>
         <section th:utext="${post.postBody}">
             Wpis do Historii
         </section>
