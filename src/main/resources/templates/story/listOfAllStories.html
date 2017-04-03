@@ -1,7 +1,7 @@
 <!doctype html>
 <html
         xmlns:th="http://www.thymeleaf.org"
-        layout:decorator="layouts/mainPage">
+        layout:decorator="layouts/main">
 <meta charset="utf-8"/>
 <head>
     <title>Kolaboracyjne Historie</title>
@@ -20,11 +20,11 @@
         <br/>
         <footer>
             <p>
-                Ta Historia ma obecnie <span class="badge" th:text="${story.posts.size()}">za mało</span> Wpisów. Może to zwiększymy..? <br/>
-                <a th:href="|@{/stories/view/}${story.id}|">Czytaj Historię!</a> ...lub <a href="|@{/stories/create/}${story.id}|">dodaj Wpis</a> od razu!
+                Ta Historia ma obecnie <span class="badge" th:text="${story.posts.size()}">za mało</span> Wpisów. <br/>
+                <a th:href="|@{/stories/view/}${story.id}|">Czytaj Historię!</a>
             </p>
             <address>
-                Historia zaczęta przez <a href="#"><span th:text="|${story.user.fullName}|">Imię i nazwisko Pisarza z linkiem do reszty Historii.</span></a>
+                Historia zaczęta przez <a href="#"><span th:text="|${story.user.fullName}|">Imię i nazwisko Pisarza z linkiem do innych Historii.</span></a>
             </address>
         </footer>
         <hr/>

@@ -1,6 +1,6 @@
 <!doctype html>
 <html
-        layout:decorator="layouts/mainPage">
+        layout:decorator="layouts/main">
 <meta charset="utf-8"/>
 <head>
     <title>Nowa Historia</title>
@@ -11,7 +11,7 @@
     <h2>Tworzenie nowej Historii</h2>
     <hr/>
 
-    <form class="form-horizontal" th:object="${story}" th:action="@{/stories/save}" method="story">
+    <form class="form-horizontal" th:object="${story}" th:action="@{/stories/save}" method="post">
 
         <input type="hidden" th:field="*{id}" />
 

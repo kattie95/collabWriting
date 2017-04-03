@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
         xmlns:th="http://www.thymeleaf.org"
-        layout:decorator="layouts/mainPage">
+        layout:decorator="layouts/main">
 <head>
     <title th:text="${post.story.title}">Tytuł wybranej historii</title>
 </head>
@@ -48,11 +48,12 @@
             <form class="form-horizontal" th:object="${comment}" th:action="@{/stories/comments/save}" method="comment">
 
                 <input type="hidden" th:field="*{id}" />
+                <input type="hidden" th:field="*{id}" />
 
                 <!-- //TODO ma brać czas aktualny - startedOn-->
-                <!--   //TODO ma brać autora automatycznie - userId -->
+                <!-- //TODO ma brać autora automatycznie - userId -->
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Twje trzy grosze:</label>
+                    <label class="col-sm-2 control-label">Twoje trzy grosze:</label>
                     <div class="col-md-10">
                         <textarea class="form-control" rows="3" th:field="*{commentBody}">komentarz</textarea>
                     </div>
