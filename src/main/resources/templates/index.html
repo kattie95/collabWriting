@@ -19,8 +19,29 @@
         <hr/>
     </div>
 
-    <h3>Ostatnio dodany Wpis: </h3>
-    <h2 id="combo" th:text="|Historia: ${post.story.title}|">tytuł</h2>
+    <h3>Najnowsza Historia, najświeższy Wpis...</h3>
+
+    <h2 id="combo" th:text="|Historia: ${story.title}|">tytuł</h2>
+    <article>
+        <section th:utext="${story.description}">
+            Opis Historyjki
+        </section>
+        <footer>
+            <br/>
+            <p th:text="${#calendars.format(story.startedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której stworzono Historię.</p>
+            <p th:text="|${story.user.fullName}|">Nazwa dodającego Historię.</p>
+            <p th:if="${story.posts.size() == 0}">
+            Jeszcze nikt nie dodał Wpisu do tej Historii. <a href="#">Zapraszam :) </a>
+            </p>
+            <p th:if="${story.posts.size() > 0}">
+                Czytaj dodane<a th:href="|@{/stories/view/}${story.id}|"> Wpisy <span class="badge" th:text="|${story.posts.size()}|">n</span></a>
+                do tej Historii.
+            </p>
+        </footer>
+    </article>
+    <br/>
+
+    <h2 id="combo" th:text="|Wpis do Historii: ${post.story.title}|">tytuł</h2>
     <article>
         <section th:utext="${post.postBody}">
             Wpis do Historii
@@ -35,6 +56,7 @@
             dla tego Wpisu.</p>
         </footer>
     </article>
+
 </div>
 </body>
 </html>
