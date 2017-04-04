@@ -19,8 +19,16 @@
         </section>
         <br/>
         <footer>
-            <p>
+            <p th:if="${story.posts.size() == 0}">
+                Jeszcze nikt nie dodał Wpisu do tej Historii. <a href="#">Zapraszam :) </a>
+            </p>
+            <p th:if="${story.posts.size() > 0} and ${story.active == true}">
                 Ta Historia ma obecnie <span class="badge" th:text="${story.posts.size()}">za mało</span> Wpisów. <br/>
+                <a th:href="|@{/stories/view/}${story.id}|">Czytaj Historię!</a>
+            </p>
+            <p th:if="${story.active == false}">
+                Ta Historia posiada już swoje zakończenie. Nie będzie dalej rosła, jednak zostanie dla głodnych Czytelników. <br/>
+                Posiada <span class="badge" th:text="${story.posts.size()}">za mało</span> Wpisów.
                 <a th:href="|@{/stories/view/}${story.id}|">Czytaj Historię!</a>
             </p>
             <address>
