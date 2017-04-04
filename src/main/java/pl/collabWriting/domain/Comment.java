@@ -1,6 +1,7 @@
 package pl.collabWriting.domain;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,6 +27,7 @@ public class Comment
     private String commentBody;
 
     @CreatedDate
+    @DateTimeFormat( pattern="MM/dd/yyyy hh:mm")
     private Date commentedOn;
 
     @SuppressWarnings("unused")

@@ -1,6 +1,7 @@
 package pl.collabWriting.domain;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,9 +24,10 @@ public class Story
     private String title;
     private String description;
 
-    //TODO wymyśleć tagi - żeby z góry można określić kierunek historii i sortować, jeśli ktoś chce tylko w danym kierunku pisać... tag.
+    //TODO think about adding tags
 
     @CreatedDate
+    @DateTimeFormat( pattern="MM/dd/yyyy hh:mm")
     private Date startedOn;
 
     private boolean active;
@@ -40,13 +42,7 @@ public class Story
     {
         //
     }
-/*
-    public Story(Long id, User user, String title) {
-        this.id = id;
-        this.user = user;
-        this.title = title;
-        }
-*/
+
     public Long getId() {
         return id;
     }
