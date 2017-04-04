@@ -1,6 +1,7 @@
 package pl.collabWriting.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,19 +59,20 @@ public class StoryController
     public String finished(Model model)
     {
         model.addAttribute("stories",storyService.listOfFinishedStories());
-        model.addAttribute("post", postService.getLastUpdatedPost());
+       // model.addAttribute("post", postService.getLastUpdatedPost()); todo make it show last Post of proper Story
         return "story/finishedStories";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @Secured({"ROLE_ADMIN", "ROLE_WRITER"})
+    @RequestMapping(value = "/create") //todo check if that get method is necessary
     public String create(Model model)
     {
         model.addAttribute("currentUser", userService.showCurrentUser());
         model.addAttribute("story", new Story());
-        return "story/create";
+        return "story/createStory";
     }
 
-    @RequestMapping(value = "/save", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Story story)
     {
         Calendar calendar = Calendar.getInstance();
@@ -80,6 +82,6 @@ public class StoryController
         story.setStartedOn(currentDate);
         story.setActive(true);
         Story savedStory = storyService.save(story);
-        return "redirect:/view/" + savedStory.getId();      //todo poprawić redirect
+        return "redirect:/newest"; // + savedStory.getId();      //todo poprawić redirect
     }
 }
