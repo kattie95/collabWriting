@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.collabWriting.service.PostService;
+import pl.collabWriting.service.StoryService;
 
 /**
  * @author kattie95
@@ -14,15 +15,22 @@ import pl.collabWriting.service.PostService;
 public class HomeConroller
 {
     private PostService postService;
+    private StoryService storyService;
 
     @Autowired
-    public HomeConroller(PostService postService) {
+    public void setPostService(PostService postService) {
         this.postService = postService;
+    }
+
+    @Autowired
+    public void setStoryService(StoryService storyService) {
+        this.storyService = storyService;
     }
 
     @RequestMapping("/")
     public String home(Model model)
     {
+        model.addAttribute("story", storyService.showNewestStory());
         model.addAttribute("post", postService.getLastUpdatedPost());
         return "index";
     }
