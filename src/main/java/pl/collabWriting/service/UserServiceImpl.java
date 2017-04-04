@@ -2,6 +2,7 @@ package pl.collabWriting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,6 +22,14 @@ public class UserServiceImpl implements UserDetailsService
     public User findByUsername(String username)
     {
         return userRepository.findByUsername(username);
+    }
+
+    public User showCurrentUser()
+    {
+        UserDetailsImpl userDetailsImpl = (UserDetailsImpl) SecurityContextHolder.getContext()
+                .getAuthentication().getPrincipal();
+        User currentUser = userDetailsImpl.getUser();
+        return currentUser;
     }
 
     @Override

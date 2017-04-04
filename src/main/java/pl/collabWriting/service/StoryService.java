@@ -21,6 +21,11 @@ public class StoryService
         return storyRepository.findAllByOrderByStartedOnDesc();
     }
 
+    public Story showNewestStory()
+    {
+        return storyRepository.findFirstByActiveTrueOrderByStartedOnDesc();
+    }
+
     public Story viewChosenStory(Long id)
     {
         return storyRepository.findOne(id);
@@ -29,6 +34,11 @@ public class StoryService
     public List<Story> listOfFinishedStories()
     {
         return storyRepository.findAllByActiveFalseOrderByStartedOnDesc();
+    }
+
+    public List<Story> listOfActiveStories()
+    {
+        return storyRepository.findAllByActiveTrue();
     }
 
     public Story save(Story story)
