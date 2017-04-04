@@ -13,7 +13,8 @@ import java.util.List;
 @Repository
 public interface StoryRepository extends PagingAndSortingRepository<Story, Long>
 {
-    List<Story> findAllByOrderByStartedOnDesc();
-    List<Story> findAllByActiveFalseOrderByStartedOnDesc();
-
+    List<Story> findAllByOrderByStartedOnDesc();            //all stories from the newest
+    Story findFirstByActiveTrueOrderByStartedOnDesc();      //new and active story
+    List<Story> findAllByActiveFalseOrderByStartedOnDesc(); //finished stories from the newest
+    List<Story> findAllByActiveTrue();                      //all active stories - for list
 }
