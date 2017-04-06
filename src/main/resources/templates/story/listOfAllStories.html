@@ -20,7 +20,8 @@
         <br/>
         <footer>
             <p th:if="${story.posts.size() == 0}">
-                Jeszcze nikt nie dodał Wpisu do tej Historii. <a href="#">Zapraszam :) </a>
+                Jeszcze nikt nie dodał Wpisu do tej Historii. Zapraszam do
+                <a th:href="|@{/stories/create/post/}${story.id}|">utworzenia pierwszego Wpisu. </a>
             </p>
             <p th:if="${story.posts.size() > 0} and ${story.active == true}">
                 Ta Historia ma obecnie <span class="badge" th:text="${story.posts.size()}">za mało</span> Wpisów. <br/>

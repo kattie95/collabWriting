@@ -20,7 +20,7 @@
         <br/>
         <footer>
             <p>
-                Ta Historia ma <span class="badge" th:text="${story.posts.size()}">za mało</span> Wpisów. <br/>
+                Ta Historia ma <span class="badge" th:text="${story.posts.size()}">za mało</span> Wpisów.
                 Została zakończona <b th:text="${#calendars.format(post.postedOn, 'MM/dd/yyyy HH:mm:ss')}">Data, w której dodano Wpis.</b>
                 przez <b th:text="|${post.user.fullName}|">Nazwa dodającego Wpis.</b>.
                 <a th:href="|@{/stories/view/}${story.id}|">Czytaj Historię!</a>
